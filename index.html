@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Access</title>
+
+<style>
+
+body{
+margin:0;
+background:black;
+color:#00ffcc;
+font-family:monospace;
+overflow:hidden;
+}
+
+#terminal{
+padding:20px;
+white-space:pre-line;
+}
+
+button{
+padding:12px 20px;
+font-size:18px;
+border:none;
+border-radius:10px;
+margin:10px;
+}
+
+#openBtn{
+display:none;
+}
+
+#main{
+display:none;
+text-align:center;
+color:white;
+font-family:Arial;
+margin-top:80px;
+}
+
+#yes{background:green;color:white;}
+
+#no{
+background:red;
+color:white;
+position:absolute;
+}
+
+#music{background:#2196f3;color:white;}
+
+#secret{background:#ff4081;color:white;}
+
+#letter{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(#ff4b6e,#ff758c);
+color:white;
+padding:20px;
+text-align:center;
+overflow:auto;
+}
+
+img{
+width:160px;
+border-radius:15px;
+margin:10px;
+}
+
+.heart{
+position:absolute;
+font-size:24px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh);}
+100%{transform:translateY(110vh);}
+}
+
+</style>
+</head>
+
+<body>
+
+
+<div id="terminal"></div>
+
+<center>
+<button id="openBtn" onclick="openMain()">
+OPEN SECRET FILE
+</button>
+</center>
+
+
+<div id="main">
+
+<h1 id="name"></h1>
+
+<button id="music" onclick="playMusic()">
+Play Music 🎵
+</button>
+
+<button id="secret" onclick="secretMsg()">
+Secret Message 💌
+</button>
+
+<br>
+
+<h2>Will you be my Valentine?</h2>
+
+<button id="yes" onclick="openLetter()">
+YES ❤️
+</button>
+
+<button id="no" onmouseover="moveNo()">
+NO 😜
+</button>
+
+</div>
+
+
+<div id="letter">
+
+<h2>
+My Dearest Princy ❤️
+</h2>
+
+<p>
+
+You came into my life like a beautiful surprise.  
+Your smile makes my world brighter every day.  
+Every moment with you feels special and real.  
+This small surprise is just to show how much you mean to me.  
+I promise to always stand beside you.  
+
+</p>
+
+<h3>
+Forever yours,<br>
+Afzal ❤️
+</h3>
+
+<br>
+
+<h3>Our Memories ❤️</h3>
+
+<img src="princy.jpg">
+<img src="afzal.jpg">
+
+</div>
+
+
+<audio id="audio" loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a73467.mp3">
+</audio>
+
+
+<script>
+
+var lines=[
+"Initializing secure system...",
+"Connecting to love database...",
+"Decrypting emotions...",
+"Target found: Princy ❤️",
+"Access granted."
+];
+
+var i=0;
+
+function type(){
+
+if(i<lines.length){
+
+document.getElementById("terminal").innerHTML+=lines[i]+"\\n";
+
+i++;
+
+setTimeout(type,800);
+
+}else{
+
+document.getElementById("openBtn").style.display="block";
+
+}
+
+}
+
+type();
+
+
+function openMain(){
+
+document.getElementById("terminal").style.display="none";
+
+document.getElementById("openBtn").style.display="none";
+
+document.getElementById("main").style.display="block";
+
+typingName();
+
+}
+
+
+var text="Princy (Chota Don 🔫🔫) ❤️";
+
+var j=0;
+
+function typingName(){
+
+if(j<text.length){
+
+document.getElementById("name").innerHTML+=text.charAt(j);
+
+j++;
+
+setTimeout(typingName,100);
+
+}
+
+}
+
+
+function moveNo(){
+
+var b=document.getElementById("no");
+
+b.style.top=Math.random()*80+"%";
+
+b.style.left=Math.random()*80+"%";
+
+}
+
+
+function playMusic(){
+
+document.getElementById("audio").play();
+
+}
+
+
+function secretMsg(){
+
+alert("Princy ❤️\\nThis surprise is made only for you.");
+
+}
+
+
+function openLetter(){
+
+document.getElementById("letter").style.display="block";
+
+setInterval(()=>{
+
+var h=document.createElement("div");
+
+h.innerHTML="❤️";
+
+h.className="heart";
+
+h.style.left=Math.random()*100+"%";
+
+h.style.animationDuration=(3+Math.random()*5)+"s";
+
+document.body.appendChild(h);
+
+},300);
+
+}
+
+</script>
+
+</body>
+</html>
