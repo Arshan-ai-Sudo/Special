@@ -14,17 +14,21 @@ font-family:monospace;
 overflow:hidden;
 }
 
+/* terminal */
+
 #terminal{
 padding:20px;
 white-space:pre-line;
 }
 
+/* buttons */
+
 button{
-padding:12px 20px;
+padding:14px 24px;
+margin:10px;
 font-size:18px;
 border:none;
-border-radius:10px;
-margin:10px;
+border-radius:12px;
 }
 
 #openBtn{
@@ -39,17 +43,28 @@ font-family:Arial;
 margin-top:80px;
 }
 
-#yes{background:green;color:white;}
+#yes{
+background:#00c853;
+color:white;
+}
 
 #no{
-background:red;
+background:#d50000;
 color:white;
 position:absolute;
 }
 
-#music{background:#2196f3;color:white;}
+#musicBtn{
+background:#2196f3;
+color:white;
+}
 
-#secret{background:#ff4081;color:white;}
+#secretBtn{
+background:#ff4081;
+color:white;
+}
+
+/* letter screen */
 
 #letter{
 display:none;
@@ -60,16 +75,21 @@ width:100%;
 height:100%;
 background:linear-gradient(#ff4b6e,#ff758c);
 color:white;
-padding:20px;
 text-align:center;
+padding:20px;
 overflow:auto;
 }
+
+/* images */
 
 img{
 width:160px;
 border-radius:15px;
 margin:10px;
+box-shadow:0 0 20px rgba(0,0,0,0.5);
 }
+
+/* hearts */
 
 .heart{
 position:absolute;
@@ -87,7 +107,6 @@ animation:fall linear infinite;
 
 <body>
 
-
 <div id="terminal"></div>
 
 <center>
@@ -101,17 +120,17 @@ OPEN SECRET FILE
 
 <h1 id="name"></h1>
 
-<button id="music" onclick="playMusic()">
+<button id="musicBtn" onclick="playMusic()">
 Play Music 🎵
 </button>
 
-<button id="secret" onclick="secretMsg()">
+<button id="secretBtn" onclick="showSecret()">
 Secret Message 💌
 </button>
 
-<br>
-
-<h2>Will you be my Valentine?</h2>
+<h2>
+Will you be my Valentine?
+</h2>
 
 <button id="yes" onclick="openLetter()">
 YES ❤️
@@ -126,17 +145,15 @@ NO 😜
 
 <div id="letter">
 
-<h2>
-My Dearest Princy ❤️
-</h2>
+<h2>My Dearest Princy ❤️</h2>
 
 <p>
 
-You came into my life like a beautiful surprise.  
-Your smile makes my world brighter every day.  
-Every moment with you feels special and real.  
-This small surprise is just to show how much you mean to me.  
-I promise to always stand beside you.  
+You came into my life like a beautiful surprise.<br>
+Your smile makes my world brighter every day.<br>
+Every moment with you feels peaceful and real.<br>
+This small surprise is just to show how much you mean to me.<br>
+I promise to stand beside you always.<br>
 
 </p>
 
@@ -147,7 +164,7 @@ Afzal ❤️
 
 <br>
 
-<h3>Our Memories ❤️</h3>
+<h3>Our Beautiful Moments ❤️</h3>
 
 <img src="princy.jpg">
 <img src="afzal.jpg">
@@ -155,17 +172,19 @@ Afzal ❤️
 </div>
 
 
-<audio id="audio" loop>
+<audio id="music" loop>
 <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a73467.mp3">
 </audio>
 
 
 <script>
 
+/* terminal intro */
+
 var lines=[
-"Initializing secure system...",
-"Connecting to love database...",
-"Decrypting emotions...",
+"Initializing system...",
+"Connecting to secure server...",
+"Decrypting private feelings...",
 "Target found: Princy ❤️",
 "Access granted."
 ];
@@ -193,6 +212,8 @@ document.getElementById("openBtn").style.display="block";
 type();
 
 
+/* open main */
+
 function openMain(){
 
 document.getElementById("terminal").style.display="none";
@@ -205,6 +226,8 @@ typingName();
 
 }
 
+
+/* typing name */
 
 var text="Princy (Chota Don 🔫🔫) ❤️";
 
@@ -225,34 +248,44 @@ setTimeout(typingName,100);
 }
 
 
+/* move NO */
+
 function moveNo(){
 
 var b=document.getElementById("no");
 
 b.style.top=Math.random()*80+"%";
-
 b.style.left=Math.random()*80+"%";
 
 }
 
 
+/* music */
+
 function playMusic(){
 
-document.getElementById("audio").play();
+document.getElementById("music").play();
 
 }
 
 
-function secretMsg(){
+/* secret message */
 
-alert("Princy ❤️\\nThis surprise is made only for you.");
+function showSecret(){
+
+document.getElementById("name").innerHTML=
+"Princy ❤️ This surprise is made only for you";
 
 }
 
+
+/* open letter */
 
 function openLetter(){
 
 document.getElementById("letter").style.display="block";
+
+document.getElementById("music").play();
 
 setInterval(()=>{
 
